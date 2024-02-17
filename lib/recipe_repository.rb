@@ -11,8 +11,8 @@ class RecipeRepository
       recipe = Recipe.new
       recipe.id = record['id'].to_i
       recipe.name = record['name']
-      recipe.cooking_time = record['cooking_time']
-      recipe.rating = record['rating']
+      recipe.cooking_time = record['cooking_time'].to_i
+      recipe.rating = record['rating'].to_i
 
       recipes << recipe
     end
@@ -20,13 +20,21 @@ class RecipeRepository
     return recipes
   end
 
-  # Gets a single record by its ID
-  # One argument: the id (number)
   def find(id)
-    # Executes the SQL query:
-    # SELECT id, name, cooking_time, rating FROM recipes WHERE id = $1;
+    sql = 'SELECT id, name, cooking_time, rating FROM recipes WHERE id = $1;'
+    sql_params = [id]
 
-    # Returns a single recipe object.
+    result_set = DatabaseConnection.exec_params(sql, sql_params)
+
+    record = result_set[0]
+
+    recipe = Recipe.new
+    recipe.id = record['id'].to_i
+    recipe.name = record['name']
+    recipe.cooking_time = record['cooking_time'].to_i
+    recipe.rating = record['rating'].to_i
+
+    return recipe
   end
 
   # Add more methods below for each operation you'd like to implement.
