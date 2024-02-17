@@ -157,10 +157,10 @@ These examples will later be encoded as RSpec tests.
 # 1
 # Get all recipes
 
-repo = recipeRepository.new
+repo = RecipeRepository.new
 
 recipes = repo.all
-recipes.length # =>  4
+recipes.length # =>  3
 
 recipes[0].id # =>  1
 recipes[0].name # =>  'Fried Eggs'
@@ -177,16 +177,12 @@ recipes[2].name # =>  'Spaghetti Bolognese'
 recipes[2].cooking_time # =>  '60'
 recipes[2].rating # =>  '4'
 
-recipes[3].id # =>  4
-recipes[3].name # =>  'Giouvarlakia'
-recipes[3].cooking_time # =>  '90'
-recipes[3].rating # =>  '5'
 
 
 # 2
 # Get a single recipe
 
-repo = recipeRepository.new
+repo = RecipeRepository.new
 
 recipe = repo.find(1)
 
@@ -209,13 +205,6 @@ recipe.id # =>  3
 recipe.name # =>  'Spaghetti Bolognese'
 recipe.cooking_time # =>  '60'
 recipe.rating # => '4'
-
-recipe = repo.find(4)
-
-recipe.id # =>  4
-recipe.name # =>  'Giouvarlakia'
-recipe.cooking_time # =>  '90'
-recipe.rating # => '5'
 
 # Add more examples for each method
 ```
